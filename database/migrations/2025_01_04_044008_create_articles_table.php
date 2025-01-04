@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('content');
+            $table->unsignedBigInteger('author_id');
+            $table->unsignedBigInteger('category_id');
+            $table->timestamp('published_at')->nullable();
+            $table->enum('status', ['draft', 'published'])->default('draft');
             $table->timestamps();
+            $table->foreign('author_id')->references('id')->on('profiles');
+            $table->foreign('category_id')->references('id')->on('categories');
+
         });
     }
 
