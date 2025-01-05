@@ -12,7 +12,7 @@
     <a class="block py-2 px-4 rounded-lg text-lg font-semibold hover:bg-blue-700 active:bg-blue-800" href="">
         Homepage
     </a>
-    <a class="block py-2 px-4 rounded-lg text-lg font-semibold hover:bg-blue-700 active:bg-blue-800" href="">
+    <a class="block py-2 px-4 rounded-lg text-lg font-semibold hover:bg-blue-700 active:bg-blue-800" href="{{url('/create/news')}}">
          Create News
     </a>
     <a class="block py-2 px-4 rounded-lg text-lg font-semibold hover:bg-blue-700 active:bg-blue-800" href="{{url('/create/category')}}">
