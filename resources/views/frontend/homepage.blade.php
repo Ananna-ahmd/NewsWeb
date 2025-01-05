@@ -97,7 +97,7 @@
                 <div class="navbar-nav mr-auto py-0">
                     <a href="index.html" class="nav-item nav-link active">Home</a>
                     <a href="{{url('Category')}}" class="nav-item nav-link">Category</a>
-                    <a href="single.html" class="nav-item nav-link"> News</a>
+                    <a href="{{url('News')}}" class="nav-item nav-link"> News</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
                         <div class="dropdown-menu rounded-0 m-0">

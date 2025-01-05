@@ -22,6 +22,9 @@ Route::get('/', function () {
 Route::get('/Category', function () {
     return view('frontend.Category');
 });
+Route::get('/News', function () {
+    return view('frontend.article');
+});
 Route::get('/create/category',[CategoryController::class,'create']);
 Route::get('/create/news',[ArticleController::class,'create']);
 Route::get('/dashboard', function () {
