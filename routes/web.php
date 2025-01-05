@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('homepage');
+    return view('frontend.homepage');
 });
 Route::get('/Category', function () {
-    return view('Category');
+    return view('frontend.Category');
 });
