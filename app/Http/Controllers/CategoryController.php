@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Http\Requests\CategoryRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
@@ -11,7 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('categories.index');
+
+        
     }
 
     /**
@@ -19,15 +25,18 @@ class CategoryController extends Controller
      */
     public function create()
     {
+
         return view('categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        Category::create($request->validated());
+        return redirect('categories')->with('flash_message', 'Category Added!');
+        
     }
 
     /**
@@ -35,7 +44,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('categories.show');
     }
 
     /**
@@ -43,22 +53,26 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('categories.edit');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CategoryRequest $request, string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->update($request->validated());
+        return redirect('categories')->with('flash_message', 'Category Updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): RedirectResponse
     {
-        //
+        Category::destroy($id);
+        return redirect('categories')->with('flash_message', 'Category Deleted!');
     }
 }
