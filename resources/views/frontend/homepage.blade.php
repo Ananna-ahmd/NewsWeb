@@ -42,7 +42,11 @@
                             <a class="nav-link text-body small" href="#">Contact</a>
                         </li>
                         <li class="nav-item">
+                        @if (auth()->check())
+                            <a class="nav-link text-body small" href="{{url('dashboard')}}">Dashboard</a>
+                            @else
                             <a class="nav-link text-body small" href="{{route('login')}}">Login</a>
+                            @endif
                         </li>
                     </ul>
                 </nav>
