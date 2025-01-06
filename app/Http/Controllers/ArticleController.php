@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 
 class ArticleController extends Controller
@@ -28,16 +28,9 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(ArticleRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'author_id' => 'nullable|exists:profiles,id',
-            'category_id' => 'nullable|exists:categories,id',
-            'status' => 'required|in:draft,published',
-            'published_at' => 'nullable|date',
-        ]);
+      
         Article::create($validated);
 
         return redirect('articles')->with('flash_message', 'Article Added!');
@@ -65,19 +58,13 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ArticleRequest $request, string $id)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'author_id' => 'nullable|exists:profiles,id',
-            'category_id' => 'nullable|exists:categories,id',
-            'status' => 'required|in:draft,published',
-            'published_at' => 'nullable|date',
-        ]);
+
 
         $article = Article::findOrFail($id);
-        $article->update($validated);
+        $article->update($request->validated());
+        return redirect('articles')->with('flash_message', 'Article Updated!');
     }
 
     /**
@@ -87,5 +74,6 @@ class ArticleController extends Controller
     {
         Article::destroy($id);
         return redirect('articles')->with('flash_message', 'Article Deleted!');
+        
     }
 }
