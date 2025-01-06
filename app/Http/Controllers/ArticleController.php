@@ -13,7 +13,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::with(['author', 'category'])->get(); 
-        return view('articles.index');
+        return view('articles.index',compact('articles'));
         
     }
 
