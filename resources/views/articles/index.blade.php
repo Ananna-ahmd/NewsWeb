@@ -1,10 +1,10 @@
 <x-app-layout>
     <div class="mt-16 bg-white shadow-lg rounded-lg p-6">
         <div class="text-xl font-semibold text-gray-800 mb-4">
-            <h2>Articles Table</h2>
+            <h2>All Articles</h2>
         </div>
         <div class="card-body">
-            <a href="{{ route('/articles/create') }}" class="bg-green-500 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400" title="Add New Article">
+            <a href="{{ url('/articles/create') }}" class="bg-green-500 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400" title="Add New Article">
                 <i class="fa fa-plus" aria-hidden="true"></i> Add New
             </a>
             <br/>
