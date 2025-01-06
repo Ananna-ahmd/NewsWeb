@@ -25,8 +25,8 @@ Route::get('/Category', function () {
 Route::get('/News', function () {
     return view('frontend.article');
 });
-Route::get('/create/category',[CategoryController::class,'create']);
-Route::get('/create/news',[ArticleController::class,'create']);
+Route::resource('categories', CategoryController::class);
+Route::resource('articles', ArticleController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

@@ -29,6 +29,13 @@
 
             <!-- Page Content -->
             <main>
+            <div class=" grid grid-cols-12">
+                    <div  class=' col-span-2 '>
+                    
+                    </div>
+                    <div class=' col-span-10 min-h-screen '>
+                    {{ $slot }}
+                    </div>
                 {{ $slot }}
             </main>
         </div>
