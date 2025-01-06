@@ -36,7 +36,7 @@
                     <div class=' col-span-10 min-h-screen '>
                     {{ $slot }}
                     </div>
-                {{ $slot }}
+               
             </main>
         </div>
     </body>

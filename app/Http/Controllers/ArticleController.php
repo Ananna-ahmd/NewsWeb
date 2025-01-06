@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Article;
 
@@ -12,8 +12,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
-        return view('frontend.article');
+        $articles = Article::with(['author', 'category'])->get(); 
+        return view('articles.index');
+        
     }
 
     /**
@@ -27,9 +28,20 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'author_id' => 'nullable|exists:profiles,id',
+            'category_id' => 'nullable|exists:categories,id',
+            'status' => 'required|in:draft,published',
+            'published_at' => 'nullable|date',
+        ]);
+        Article::create($validated);
+
+        return redirect('articles')->with('flash_message', 'Article Added!');
+
     }
 
     /**
@@ -37,7 +49,8 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $article = Article::with(['author', 'category'])->findOrFail($id);
+        return view('articles.show');
     }
 
     /**
@@ -45,7 +58,8 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $article = Article::findOrFail($id);
+        return view('articles.edit');
     }
 
     /**
@@ -53,7 +67,17 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'author_id' => 'nullable|exists:profiles,id',
+            'category_id' => 'nullable|exists:categories,id',
+            'status' => 'required|in:draft,published',
+            'published_at' => 'nullable|date',
+        ]);
+
+        $article = Article::findOrFail($id);
+        $article->update($validated);
     }
 
     /**
@@ -61,6 +85,7 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Article::destroy($id);
+        return redirect('articles')->with('flash_message', 'Article Deleted!');
     }
 }
