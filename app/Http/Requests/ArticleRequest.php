@@ -11,7 +11,7 @@ class ArticleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,7 @@ class ArticleRequest extends FormRequest
             'content' => 'required|string',
             'author_id' => 'nullable|exists:profiles,id',
             'category_id' => 'nullable|exists:categories,id',
-            'status' => 'required|in:draft,published',
+            'status' => 'nullable|in:draft,published',
             'published_at' => 'nullable|date',
         ];
     }
