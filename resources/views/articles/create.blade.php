@@ -4,20 +4,20 @@
             <div class="text-xl font-semibold text-gray-800 mb-4"> Post News</div>
             <div class="card-body">
 
-                <form action="{{ route('articles.store') }}" method="post" class="h-full flex flex-col justify-between">
+                <form action="{{route('articles.store')}}" method="post" class="h-full flex flex-col justify-between">
                     @csrf
                     <div class="mb-4">
                         <label for="name" class="block text-gray-700 font-semibold mb-2">News Title</label>
-                        <input type="text" name="name" id="name" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" value="{{ old('name') }}">
-                        @error('name')
+                        <input type="text" name="title" id="name" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" value="{{ old('title') }}">
+                        @error('title')
                             <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="mb-4">
                         <label for="description" class="block text-gray-700 font-semibold mb-2"> Description</label>
-                        <textarea name="description" id="description" rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">{{ old('description') }}</textarea>
-                        @error('description')
+                        <textarea name="content" id="description" rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">{{ old('content') }}</textarea>
+                        @error('content')
                             <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                         @enderror
                     </div>

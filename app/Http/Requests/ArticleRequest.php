@@ -24,7 +24,6 @@ class ArticleRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'author_id' => 'nullable|exists:profiles,id',
             'category_id' => 'nullable|exists:categories,id',
             'status' => 'nullable|in:draft,published',
             'published_at' => 'nullable|date',

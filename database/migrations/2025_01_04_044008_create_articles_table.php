@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamp('published_at')->nullable();
             $table->enum('status', ['draft', 'published'])->default('draft');
             $table->timestamps();
-            $table->foreign('author_id')->references('id')->on('profiles');
+            $table->foreign('author_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');
 
         });

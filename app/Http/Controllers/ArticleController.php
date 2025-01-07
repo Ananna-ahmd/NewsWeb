@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -12,7 +13,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::with(['author', 'category'])->get(); 
+        $articles = Article::get(); 
         return view('articles.index',compact('articles'));
         
     }
@@ -28,10 +29,10 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ArticleRequest $request): RedirectResponse
+    public function store(ArticleRequest $request)
     {
-      
-        Article::create($validated);
+
+        Article::create($request->merge(['author_id'=>Auth::user()->id])->all());
 
         return redirect('articles')->with('flash_message', 'Article Added!');
 
