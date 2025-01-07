@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.homepage');
-});
-Route::get('/Category', function () {
-    return view('frontend.Category');
-});
+Route::get('/', [FrontendController::class,'index']) ;
+//Route::get('/Category', [FrontendController::class] {
+    //return view('frontend.Category');
+//});
 Route::get('/News', function () {
     return view('frontend.article');
 });

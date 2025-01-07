@@ -47,7 +47,7 @@
                                     <form method="POST" action="{{ url('/articles/' . $article->id) }}" accept-charset="UTF-8" style="display:inline">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
-                                        <button type="submit" class="bg-red-500 text-black text-sm py-1 px-3 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 mr-1" title="Delete Article" onclick="return confirm(&quot;Confirm delete?&quot;)">
+                                        <button type="submit" class="bg-red-500 text-black text-sm py-1 px-3 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 mr-1" title="Delete Article" onclick="return confirm('Confirm delete?')">
                                             <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
                                         </button>
                                     </form>
