@@ -43,8 +43,8 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        $article = Article::with(['author', 'category'])->findOrFail($id);
-        return view('articles.show');
+        $articles = Article::findOrFail($id);
+        return view('articles.show',compact('articles'));
     }
 
     /**
@@ -52,8 +52,8 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        $article = Article::findOrFail($id);
-        return view('articles.edit');
+        $articles = Article::findOrFail($id);
+        return view('articles.edit',compact('articles'));
     }
 
     /**
