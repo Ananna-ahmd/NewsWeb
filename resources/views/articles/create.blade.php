@@ -4,7 +4,7 @@
             <div class="text-xl font-semibold text-gray-800 mb-4"> Post News</div>
             <div class="card-body">
 
-                <form action="{{route('articles.store')}}" method="post" class="h-full flex flex-col justify-between">
+                <form enctype="multipart/form-data" action="{{route('articles.store')}}" method="post" class="h-full flex flex-col justify-between">
                     @csrf
                     <div class="mb-4">
                         <label for="name" class="block text-gray-700 font-semibold mb-2">News Title</label>

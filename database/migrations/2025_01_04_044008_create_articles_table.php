@@ -19,6 +19,7 @@ return new class extends Migration
             $table->boolean('featured_news')->default(0);
             $table->unsignedBigInteger('author_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
+            $table->LONGBLOB('image')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->enum('status', ['draft', 'published'])->default('draft');
             $table->timestamps();

@@ -25,6 +25,7 @@ class ArticleRequest extends FormRequest
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'category_id' => 'nullable|exists:categories,id',
+            'image' => 'nullable|image|max:2048', 
             'status' => 'nullable|in:draft,published',
             'published_at' => 'nullable|date',
         ];

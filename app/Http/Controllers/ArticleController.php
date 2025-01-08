@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
@@ -14,9 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::get(); 
-        return view('articles.index',compact('articles'));
-        
+        $articles = Article::get();
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('articles.create',compact('categories'));
+        return view('articles.create', compact('categories'));
     }
 
     /**
@@ -33,11 +33,21 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
+        $data = $request->except(['image', '_token']);
+        $data['author_id'] =  Auth::user()->id;
+        if ($request->hasFile('image')) {
+            $extentaion = $request->file('image')->getClientOriginalExtension();
+            $imageName = $request->file('image')->getClientOriginalName();
+            $encripton = md5($imageName) . '.' . $extentaion;
+            $data['image'] = $encripton;
+            $request->file('image')->move('img',$encripton);
+        }
 
-        Article::create($request->merge(['author_id'=>Auth::user()->id])->all());
+     
+
+        Article::create($data);
 
         return redirect('articles')->with('flash_message', 'Article Added!');
-
     }
 
     /**
@@ -46,7 +56,7 @@ class ArticleController extends Controller
     public function show(string $id)
     {
         $articles = Article::findOrFail($id);
-        return view('articles.show',compact('articles'));
+        return view('articles.show', compact('articles'));
     }
 
     /**
@@ -55,7 +65,7 @@ class ArticleController extends Controller
     public function edit(string $id)
     {
         $articles = Article::findOrFail($id);
-        return view('articles.edit',compact('articles'));
+        return view('articles.edit', compact('articles'));
     }
 
     /**
@@ -77,6 +87,5 @@ class ArticleController extends Controller
     {
         Article::destroy($id);
         return redirect('articles')->with('flash_message', 'Article Deleted!');
-        
     }
 }
