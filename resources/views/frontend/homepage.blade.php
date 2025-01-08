@@ -200,30 +200,37 @@
 
 
         <!-- Featured News Slider Start -->
-        @foreach($feauturing as $key => $article)
         <div class="container-fluid pt-5 mb-3">
-            <div class="container">
-                <div class="section-title">
-                    <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
-                </div>
-                <div class="owl-carousel news-carousel carousel-item-4 position-relative">
+    <div class="container">
+        <div class="section-title">
+            <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
+        </div>
+        <div class="row">
+            @foreach($feauturing as $key => $article)
+                <div class="col-md-6 mb-4">
                     <div class="position-relative overflow-hidden" style="height: 300px;">
                         <img class="img-fluid h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
                         <div class="overlay">
                             <div class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Business</a>
-                                <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                                    href="">{{$article['parent']->category?->name ?? "N/A"}}</a>
+                                <a class="text-white" href=""><small>{{ $article->published_at ?? 'Jan 01, 2045' }}</small></a>
                             </div>
-                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{$article->title}}</a>
+                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold text-wrap"
+                                style="display: block; word-wrap: break-word;" 
+                                href="">{{$article->title}}</a>
                         </div>
-
-
                     </div>
                 </div>
-            </div>
-
+                @if(($key + 1) % 2 == 0)
+                    </div><div class="row">
+                @endif
             @endforeach
+        </div>
+    </div>
+</div>
+
+
             <!-- Featured News Slider End -->
 
 
