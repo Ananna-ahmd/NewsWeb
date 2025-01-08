@@ -27,6 +27,13 @@
                             <span class="ml-2 text-gray-700 font-semibold">Highlight this News</span>
                         </label>
                     </div>
+                    <div class="mb-4">
+                        <label for="featured_news" class="inline-flex items-center">
+                            <input type="checkbox" name="featured_news" id="featured_news" value="1" class="form-checkbox text-green-500 border-gray-300 rounded focus:ring-2 focus:ring-blue-500" {{ old('featured_news') ? 'checked' : '' }}>
+                            <span class="ml-2 text-gray-700 font-semibold">Featured News</span>
+                        </label>
+                    </div>
+
 
                   
 

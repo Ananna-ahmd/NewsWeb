@@ -199,7 +199,7 @@
 
 
         <!-- Featured News Slider Start -->
-        @foreach($highlighting as $key => $article)
+        @foreach($feauturing as $key => $article)
         <div class="container-fluid pt-5 mb-3">
             <div class="container">
                 <div class="section-title">

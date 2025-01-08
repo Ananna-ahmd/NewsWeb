@@ -10,6 +10,8 @@ class FrontendController extends Controller
     function index(){
         $highlighting = Article::where('is_highlighted',1)->get(); 
         $highlightingData = [];
+        $feauturing = Article::where('featured_news',1)->get(); 
+        $feauturingData = [];
         $j = 0; // Counter for children within a parent
         $l = 0; // Counter for parent groups
         
@@ -37,7 +39,7 @@ class FrontendController extends Controller
         
 
 
-        return view('frontend.homepage',compact('highlighting','highlightingData'));
+        return view('frontend.homepage',compact('highlighting','highlightingData','feauturing'));
 
     }
   
