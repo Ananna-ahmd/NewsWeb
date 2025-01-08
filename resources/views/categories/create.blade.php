@@ -4,7 +4,7 @@
             <div class="text-xl font-semibold text-gray-800 mb-4">Create  Category</div>
             <div class="card-body">
 
-                <form action="" method="post" class="h-full flex flex-col justify-between">
+                <form action="{{route('categories.store')}}" method="post" class="h-full flex flex-col justify-between">
                     @csrf
                     <div class="mb-4">
                         <label for="name" class="block text-gray-700 font-semibold mb-2">Category Name</label>
