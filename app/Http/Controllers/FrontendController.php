@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     function index(){
-        $highlighting = Article::where('h',1)->get(); 
+        $highlighting = Article::where('is_highlighted',1)->get(); 
         $highlightingData = [];
         $j = 0; // Counter for children within a parent
         $l = 0; // Counter for parent groups
