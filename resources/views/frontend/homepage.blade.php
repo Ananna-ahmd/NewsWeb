@@ -131,6 +131,7 @@
         <div class="row">
             <!-- Main News Slider Start -->
             @foreach($highlightingData as $key => $article)
+            
 
             <div class="col-lg-7 px-0">
                 <div class="owl-carousel main-carousel position-relative">
@@ -139,7 +140,7 @@
                         <div class="overlay">
                             <div class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Business</a>
+                                    href="">{{$article['parent']->category?->name ?? "N/A"}} </a>
                                 <a class="text-white" href="">Jan 07, 2025</a>
                             </div>
                             <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">{{$article['parent']->title}}</a>
@@ -159,7 +160,7 @@
                             <div class="overlay">
                                 <div class="mb-2">
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href="">Business</a>
+                                        href="">{{$value->category?->name ?? "N/A"}}</a>
                                     <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                                 </div>
                                 <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">${{ $value->title }}</a>

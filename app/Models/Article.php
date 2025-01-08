@@ -9,8 +9,10 @@ class Article extends Model
 {
 
     protected $table = 'articles';
-    protected $guarded=[];
+    protected $guarded = [];
     use HasFactory;
-
-  
+    public function Category()
+    {
+        return $this->hasOne(Category::class, 'id', 'category_id');
+    }
 }

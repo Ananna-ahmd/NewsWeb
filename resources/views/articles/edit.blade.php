@@ -38,6 +38,13 @@
                     @enderror
                 </div>
 
+                <div class="mb-4">
+                        <label for="is_highlighted" class="inline-flex items-center">
+                            <input type="checkbox" name="is_highlighted" id="is_highlighted" value="1" class="form-checkbox text-green-500 border-gray-300 rounded focus:ring-2 focus:ring-blue-500" {{ old('is_highlighted') ? 'checked' : '' }}>
+                            <span class="ml-2 text-gray-700 font-semibold">Highlight this News</span>
+                        </label>
+                    </div>
+
                 <!-- Buttons -->
                 <div class="mt-6 flex items-center space-x-4">
                     <button 

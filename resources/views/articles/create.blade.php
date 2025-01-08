@@ -22,6 +22,20 @@
                         @enderror
                     </div>
                     <div class="mb-4">
+                        <label for="category_id" class="block text-gray-700 font-semibold mb-2">Category</label>
+                        <select name="category_id" id="category_id" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                            <option value="" disabled selected>News category</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                            <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-4">
                         <label for="is_highlighted" class="inline-flex items-center">
                             <input type="checkbox" name="is_highlighted" id="is_highlighted" value="1" class="form-checkbox text-green-500 border-gray-300 rounded focus:ring-2 focus:ring-blue-500" {{ old('is_highlighted') ? 'checked' : '' }}>
                             <span class="ml-2 text-gray-700 font-semibold">Highlight this News</span>

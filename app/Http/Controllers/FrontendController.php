@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     function index(){
-        $highlighting = Article::where('is_highlighted',1)->get(); 
-        $highlightingData = [];
+    $highlighting = Article::where('is_highlighted',1)->with('category')->get(); 
+        
+        //$categories=Category::get();
         $feauturing = Article::where('featured_news',1)->get(); 
         $feauturingData = [];
+        $highlightingData = [];
+
         $j = 0; // Counter for children within a parent
         $l = 0; // Counter for parent groups
         
@@ -34,10 +38,7 @@ class FrontendController extends Controller
             }
         }
         
-        // // Final array structure
-        //  return $highlightingData;
-        
-
+       
 
         return view('frontend.homepage',compact('highlighting','highlightingData','feauturing'));
 
