@@ -4,7 +4,7 @@
             <h2 class="text-xl font-semibold text-gray-800">Edit Article</h2>
         </div>
         <div class="card-body mt-4">
-            <form action="{{ url('articles/' . $articles->id) }}" method="post">
+            <form enctype="multipart/form-data" action="{{ url('articles/' . $articles->id) }}" method="post">
                 @csrf
                 @method('PATCH')
 

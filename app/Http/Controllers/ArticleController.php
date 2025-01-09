@@ -41,6 +41,7 @@ class ArticleController extends Controller
             $encripton = md5($imageName) . '.' . $extentaion;
             $data['image'] = $encripton;
             $request->file('image')->move('img',$encripton);
+
         }
 
      
@@ -73,6 +74,16 @@ class ArticleController extends Controller
      */
     public function update(ArticleRequest $request, string $id)
     {
+        $data = $request->except(['image', '_token']);
+        $data['author_id'] =  Auth::user()->id;
+        if ($request->hasFile('image')) {
+            $extentaion = $request->file('image')->getClientOriginalExtension();
+            $imageName = $request->file('image')->getClientOriginalName();
+            $encripton = md5($imageName) . '.' . $extentaion;
+            $data['image'] = $encripton;
+            $request->file('image')->move('img',$encripton);
+            
+        }
 
 
         $article = Article::findOrFail($id);
