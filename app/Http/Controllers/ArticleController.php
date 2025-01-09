@@ -81,12 +81,11 @@ class ArticleController extends Controller
     $data = $request->except(['image', '_token']);
     
     if ($request->hasFile('image')) {
-        // Remove the old image if it exists
+       
         if ($article->image && file_exists(public_path('img/' . $article->image))) {
             unlink(public_path('img/' . $article->image));
         }
 
-        // Upload the new image
         $extension = $request->file('image')->getClientOriginalExtension();
         $imageName = time() . '.' . $extension;
         $data['image'] = $imageName;

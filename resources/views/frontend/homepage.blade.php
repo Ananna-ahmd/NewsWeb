@@ -164,7 +164,7 @@
                                         href="">{{$value->category?->name ?? "N/A"}}</a>
                                     <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                                 </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">${{ $value->title }}</a>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{ $value->title }}</a>
                             </div>
                         </div>
                     </div>
