@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontendController::class,'index']) ;
-//Route::get('/Category', [FrontendController::class] {
-    //return view('frontend.Category');
-//});
+//Route::get('/Category', [FrontendController::class,'index']) ;
+Route::get('/Category', function () {
+    return view('frontend.Category');
+});
 Route::get('/News', function () {
     return view('frontend.article');
 });
