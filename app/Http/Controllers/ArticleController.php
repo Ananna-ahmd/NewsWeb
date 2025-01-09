@@ -74,20 +74,27 @@ class ArticleController extends Controller
      */
     public function update(ArticleRequest $request, string $id)
     {
-        $data = $request->except(['image', '_token']);
-        $data['author_id'] =  Auth::user()->id;
-        if ($request->hasFile('image')) {
-            $extentaion = $request->file('image')->getClientOriginalExtension();
-            $imageName = $request->file('image')->getClientOriginalName();
-            $encripton = md5($imageName) . '.' . $extentaion;
-            $data['image'] = $encripton;
-            $request->file('image')->move('img',$encripton);
-            
-        }
-
 
         $article = Article::findOrFail($id);
-        $article->update($request->validated());
+        
+
+    $data = $request->except(['image', '_token']);
+    
+    if ($request->hasFile('image')) {
+        // Remove the old image if it exists
+        if ($article->image && file_exists(public_path('img/' . $article->image))) {
+            unlink(public_path('img/' . $article->image));
+        }
+
+        // Upload the new image
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $imageName = time() . '.' . $extension;
+        $data['image'] = $imageName;
+
+        $request->file('image')->move(public_path('img'), $imageName);
+    }
+       // $article->update($request->validated());
+       $article->update($data);
         return redirect('articles')->with('flash_message', 'Article Updated!');
     }
 
