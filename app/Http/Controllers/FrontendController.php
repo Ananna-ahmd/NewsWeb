@@ -43,6 +43,13 @@ class FrontendController extends Controller
         return view('frontend.homepage',compact('highlighting','highlightingData','feauturing'));
 
     }
+    function news(){
+        $feauturing = Article::where('featured_news',1)->get(); 
+        $feauturingData = [];
+        return view('frontend.article',compact('feauturing'));
+
+    }
+
   
     
 }

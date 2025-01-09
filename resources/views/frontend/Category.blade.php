@@ -183,9 +183,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 mb-3">
-                            <a href=""><img class="img-fluid w-100" src="img/ads-728x90.png" alt=""></a>
-                        </div>
+                        
                         <div class="col-lg-6">
                             <div class="position-relative mb-3">
                                 <img class="img-fluid w-100" src="img/news-700x435-3.jpg" style="object-fit: cover;">

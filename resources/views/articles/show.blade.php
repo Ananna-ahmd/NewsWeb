@@ -5,7 +5,13 @@
                 <h2>Article Details</h2>
             </div>
             <div class="card-body">
-                <h5 class="text-xl font-semibold">Title: {{ $articles->title }}</h5>
+                <h2 class="text-xl font-semibold"> {{ $articles->title }}</h2>
+                <h5 class="text-xl font-semibold"></h5>
+                @if($articles->image)
+           <img src="{{ asset('img/' . $articles->image) }}" alt="Article Image" class="w-50 h-50 rounded-md">
+             @else
+            <p class="text-gray-500">No image available</p>
+             @endif
                 <p class="text-base text-gray-700"><strong>Content:</strong> {{ $articles->content }}</p>
                 <p class="card-text"><strong>Author:</strong> {{ $articles->author->name ?? 'Unknown' }}</p>
                 <p class="card-text"><strong>Category:</strong> {{ $articles->category->name ?? 'Uncategorized' }}</p>
@@ -14,12 +20,8 @@
             </div>
             <div class="bg-gray-100 p-4 rounded-b-lg">
                 <a href="{{ url('articles') }}" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">Back to Articles</a>
-                <a href="{{ url('articles/' . $articles->id . '/edit') }}" class="bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400">Edit</a>
-                <form action="{{ url('articles/' . $articles->id) }}" method="POST" style="display:inline-block;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400" onclick="return confirm('Are you sure you want to delete this article?');">Delete</button>
-                </form>
+                
+               
             </div>
         </div>
     </div>

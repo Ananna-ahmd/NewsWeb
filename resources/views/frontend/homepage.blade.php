@@ -144,7 +144,7 @@
                                     href="">{{$article['parent']->category?->name ?? "N/A"}} </a>
                                 <a class="text-white" href="">Jan 07, 2025</a>
                             </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">{{$article['parent']->title}}</a>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="{{ url('/articles/' . $article['parent']->id) }}">{{$article['parent']->title}}</a>
                         </div>
                     </div>
 
@@ -164,7 +164,7 @@
                                         href="">{{$value->category?->name ?? "N/A"}}</a>
                                     <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                                 </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{ $value->title }}</a>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ url('/articles/' . $value->id) }}">{{ $value->title }}</a>
                             </div>
                         </div>
                     </div>
@@ -220,7 +220,7 @@
                             </div>
                             <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold text-wrap"
                                 style="display: block; word-wrap: break-word;" 
-                                href="">{{$article->title}}</a>
+                                href="{{ url('/articles/' . $article->id) }}">{{$article->title}}</a>
                         </div>
                     </div>
                 </div>
