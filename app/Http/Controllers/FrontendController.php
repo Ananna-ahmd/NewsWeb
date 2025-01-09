@@ -50,6 +50,13 @@ class FrontendController extends Controller
 
     }
 
+    function newsView($id){
+        $articles = Article::where('id',$id)->get();
+        $feauturingData = [];
+        return view('frontend.news1',compact('articles'));
+
+    }
+
   
     
 }

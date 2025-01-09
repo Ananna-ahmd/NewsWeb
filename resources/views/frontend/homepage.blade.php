@@ -144,7 +144,7 @@
                                     href="">{{$article['parent']->category?->name ?? "N/A"}} </a>
                                 <a class="text-white" href="">Jan 07, 2025</a>
                             </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="{{ url('/articles/' . $article['parent']->id) }}">{{$article['parent']->title}}</a>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="{{url('news/' . $article['parent']->id )}}">{{$article['parent']->title}}</a>
                         </div>
                     </div>
 
@@ -164,7 +164,7 @@
                                         href="">{{$value->category?->name ?? "N/A"}}</a>
                                     <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                                 </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ url('/articles/' . $value->id) }}">{{ $value->title }}</a>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{url('news/' . $value->id )}}">{{ $value->title }}</a>
                             </div>
                         </div>
                     </div>
@@ -211,7 +211,7 @@
             @foreach($feauturing as $key => $article)
                 <div class="col-md-6 mb-4">
                     <div class="position-relative overflow-hidden" style="height: 300px;">
-                        <img class="img-fluid h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
+                        <img class="img-fluid h-100" src="{{ asset('img/' . $article->image) }}" style="object-fit: cover;">
                         <div class="overlay">
                             <div class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -220,7 +220,7 @@
                             </div>
                             <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold text-wrap"
                                 style="display: block; word-wrap: break-word;" 
-                                href="{{ url('/articles/' . $article->id) }}">{{$article->title}}</a>
+                                href="{{url('news/' . $article->id )}}">{{$article->title}}</a>
                         </div>
                     </div>
                 </div>
@@ -255,14 +255,14 @@
                                 @endif
                                 <div class="col-lg-6">
                                     <div class="position-relative mb-3">
-                                        <img class="img-fluid w-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
+                                        <img class="img-fluid w-100" src="{{ asset('img/' . $article->image) }}" style="object-fit: cover;">
                                         <div class="bg-white border border-top-0 p-4">
                                             <div class="mb-2">
                                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                                                     href="">Business</a>
                                                 <a class="text-body" href=""><small>Jan 07, 2025</small></a>
                                             </div>
-                                            <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">{{$article->title}}</a>
+                                            <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{ url('/articles/' . $article->id) }}">{{$article->title}}</a>
                                             <p class="m-0">{{$article->content}}</p>
                                         </div>
                                         <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
@@ -288,13 +288,13 @@
 
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                        <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
+                                        <img class="img-fluid" src="" alt="">
                                         <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                             <div class="mb-2">
                                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
                                                 <a class="text-body" href=""><small>Jan 07, 2025</small></a>
                                             </div>
-                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">{{$article->title}}</a>
+                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ url('/articles/' . $article->id) }}">{{$article->title}}</a>
                                         </div>
                                     </div>
 
