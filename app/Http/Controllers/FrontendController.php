@@ -56,6 +56,12 @@ class FrontendController extends Controller
         return view('frontend.news1',compact('articles'));
 
     }
+    function category(){
+        $categories = Category::all();
+        $articles = Article::where('category_id')->get();
+        return view('frontend.Category',compact('categories','articles'));
+
+    }
 
   
     

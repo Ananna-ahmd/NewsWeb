@@ -19,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class,'index']) ;
 //Route::get('/Category', [FrontendController::class,'news']) ;
- Route::get('/Category', function () {
-     return view('frontend.Category');
- });
+ Route::get('/Category', [FrontendController::class,'category']) ;
 Route::get('/News', [FrontendController::class,'news']);
 Route::get('/news/{id}', [FrontendController::class,'newsView']);
 Route::resource('categories', CategoryController::class);
