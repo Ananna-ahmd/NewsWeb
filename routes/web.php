@@ -22,6 +22,10 @@ Route::get('/', [FrontendController::class,'index']) ;
  Route::get('/Category', [FrontendController::class,'category']) ;
 Route::get('/News', [FrontendController::class,'news']);
 Route::get('/news/{id}', [FrontendController::class,'newsView']);
+Route::get('/contact', function () {
+    return view('frontend.contact');
+});
+Route::get('/categories/{id}', [FrontendController::class,'CategoryView']);
 Route::resource('categories', CategoryController::class);
 Route::resource('articles', ArticleController::class);
 Route::get('/dashboard', function () {

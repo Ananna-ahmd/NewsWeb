@@ -62,6 +62,14 @@ class FrontendController extends Controller
         return view('frontend.Category',compact('categories','articles'));
 
     }
+    function CategoryView(){
+       $categories = Article::with('id')->get();
+      
+        
+        return view('frontend.Category',compact('categories','articles'));
+
+    }
+
 
   
     

@@ -102,16 +102,10 @@
                     <a href="index.html" class="nav-item nav-link active">Home</a>
                     <a href="{{url('Category')}}" class="nav-item nav-link">Category</a>
                     <a href="{{url('News')}}" class="nav-item nav-link"> News</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="#" class="dropdown-item">Menu item 1</a>
-                            <a href="#" class="dropdown-item">Menu item 2</a>
-                            <a href="#" class="dropdown-item">Menu item 3</a>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
-                </div>
+                    
+                        
+                    <a href="{{url('contact')}}" class="nav-item nav-link">Contact</a>
+              
                 <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control border-0" placeholder="Keyword">
                     <div class="input-group-append">
