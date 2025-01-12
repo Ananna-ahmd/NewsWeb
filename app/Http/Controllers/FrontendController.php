@@ -10,6 +10,8 @@ class FrontendController extends Controller
 {
     function index(){
     $highlighting = Article::where('is_highlighted',1)->with('category')->get(); 
+    $allnews=  Article::paginate(10);
+
         
         //$categories=Category::get();
         $feauturing = Article::where('featured_news',1)->get(); 
@@ -40,7 +42,7 @@ class FrontendController extends Controller
         
        
 
-        return view('frontend.homepage',compact('highlighting','highlightingData','feauturing'));
+        return view('frontend.homepage',compact('highlighting','highlightingData','feauturing','allnews'));
 
     }
     function news(){

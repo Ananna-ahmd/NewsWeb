@@ -275,7 +275,7 @@
 
 
                                 <!-- Small Size news -->
-                                @foreach($highlighting as $key => $article)
+                                @foreach($allnews as $key => $article)
                                 @if($loop->iteration > 2)
                                 @break
                                 @endif
@@ -294,7 +294,7 @@
 
                                 </div>
                                 @endforeach
-                                @foreach($highlighting as $key => $article)
+                                @foreach($allnews as $key => $article)
                                 @if($loop->iteration <= 2)
                                     @continue
                                     @endif
