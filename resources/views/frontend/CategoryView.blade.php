@@ -7,9 +7,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                @foreach($categories as $key => $category)
+              
+                
+               
                     <!-- News Detail Start -->
                     <div class="position-relative mb-3">
+                        @foreach($articles as $key => $article)
                         <img class="img-fluid w-100" src="{{ asset('img/' . $article->image) }}" style="object-fit: cover;">
                         <div class="bg-white border border-top-0 p-4">
                             <div class="mb-3">
@@ -17,7 +20,7 @@
                                     href="">Business</a>
                                 <a class="text-body" href="">Jan 01, 2045</a>
                             </div>
-                            <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">{{$category->name}}</h1>
+                            <h1 class="mb-3 text-secondary text-uppercase font-weight-bold"></h1>
                             <p>{{$article->content}}</p>
                             <p>Voluptua est takimata stet invidunt sed rebum nonumy stet, clita aliquyam dolores
                                 vero stet consetetur elitr takimata rebum sanctus. Sit sed accusam stet sit
@@ -40,6 +43,7 @@
                         </div>
                     </div>
                     @endforeach
+                    
                     <!-- News Detail End -->
 
                     <!-- Comment List Start -->
@@ -273,4 +277,4 @@
     <!-- News With Sidebar End -->
 
 
-    @endsection
+@endsection

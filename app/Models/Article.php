@@ -13,6 +13,6 @@ class Article extends Model
     use HasFactory;
     public function Category()
     {
-        return $this->hasOne(Category::class, 'id', 'category_id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 }
