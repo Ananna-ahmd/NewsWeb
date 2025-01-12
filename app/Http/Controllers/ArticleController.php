@@ -13,6 +13,25 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function ImageUpload( $request, $fieldName = 'image', $existingImage = null){
+
+        if ($request->hasFile($fieldName)) {
+            
+            if ($existingImage && file_exists(public_path('img/' . $existingImage))) {
+                unlink(public_path('img/' . $existingImage));
+            }
+
+
+            $file = $request->file($fieldName);
+            $imageName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('img'), $imageName);
+    
+            return $imageName;
+
+
+    }
+    return $existingImage;
+}
     public function index()
     {
         $articles = Article::get();
@@ -33,7 +52,7 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        $data = $request->except(['image', '_token']);
+      /*  $data = $request->except(['image', '_token']);
         $data['author_id'] =  Auth::user()->id;
         if ($request->hasFile('image')) {
             $extentaion = $request->file('image')->getClientOriginalExtension();
@@ -42,11 +61,19 @@ class ArticleController extends Controller
             $data['image'] = $encripton;
             $request->file('image')->move('img',$encripton);
 
-        }
+        }*/
+        $imageName = $this->ImageUpload($request);
+
+
+    Article::create([
+        'title' => $request->title,
+        'content' => $request->content,
+        'image' => $imageName,
+    ]);
 
      
 
-        Article::create($data);
+       // Article::create($data);
 
         return redirect('articles')->with('flash_message', 'Article Added!');
     }
@@ -78,7 +105,7 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
         
 
-    $data = $request->except(['image', '_token']);
+       /* $data = $request->except(['image', '_token']);
     
     if ($request->hasFile('image')) {
        
@@ -91,9 +118,17 @@ class ArticleController extends Controller
         $data['image'] = $imageName;
 
         $request->file('image')->move(public_path('img'), $imageName);
-    }
+    }*/
        // $article->update($request->validated());
-       $article->update($data);
+       $imageName = $this->ImageUpload($request, 'image', $article->image);
+
+      // $article->update($data);
+
+      $article->update([
+        'title' => $request->title,
+        'content' => $request->content,
+        'image' => $imageName,
+    ]);
         return redirect('articles')->with('flash_message', 'Article Updated!');
     }
 
